@@ -1,4 +1,4 @@
-<!doctype html><html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Memorandum pentru Investitori — EVELYNICOL GLOBAL VALUE HOLDINGS S.A."><title>Memorandum pentru Investitori | EVELYNICOL GLOBAL VALUE HOLDINGS S.A.</title><link rel="stylesheet" href="styles.css?v=memorandum-page-1"></head><body class="memorandum-document"><header class="memo-page-nav"><a class="memo-back" href="/">← Înapoi la EVELYNICOL GLOBAL VALUE HOLDINGS S.A.</a><span>MEMORANDUM PENTRU INVESTITORI</span></header><main id="memorandum" class="memorandum memorandum-page"><section class="memo-cover">
+<!doctype html><html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Memorandum pentru Investitori — EVELYNICOL GLOBAL VALUE HOLDINGS S.A."><title>Memorandum pentru Investitori | EVELYNICOL GLOBAL VALUE HOLDINGS S.A.</title><link rel="stylesheet" href="styles.css?v=memorandum-page-1"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script></head><body class="memorandum-document"><header class="memo-page-nav"><a class="memo-back" href="/">← Înapoi la EVELYNICOL GLOBAL VALUE HOLDINGS S.A.</a><span>MEMORANDUM PENTRU INVESTITORI</span></header><main id="memorandum" class="memorandum memorandum-page"><section class="memo-cover">
 <div class="memo-cover-top"><span>DOCUMENT PENTRU INVESTITORI</span><span>EDIȚIE DE LUCRU</span></div>
 <div class="memo-cover-body"><p class="eyebrow">EVELYNICOL GLOBAL VALUE HOLDINGS S.A.</p><h1>Memorandum<br>pentru Investitori.</h1><p class="memo-cover-deck">Filosofia, arhitectura capitalului și regulile după care urmărim să construim valoare pe termen lung.</p></div>
 <div class="memo-cover-bottom"><span>DISCIPLINĂ · RĂBDARE · VALOARE</span><span>ROMÂNIA · SUA</span></div>
@@ -6,12 +6,12 @@
 <nav class="memo-toc" id="memo-contents" aria-label="Cuprins Memorandum">
 <div class="memo-toc-title"><span>CUPRINS</span><p>Arhitectura documentului</p></div>
 <div class="memo-toc-grid">
-<a href="#memo-overview"><b>01</b><span>Structura Memorandumului</span></a>
-<a href="#memo-math"><b>02</b><span>Arhitectura capitalului</span></a>
-<a href="#memo-owners"><b>03</b><span>Evaluare & raportare</span></a>
-<a href="#memo-protection"><b>04</b><span>Riscuri & protecții</span></a>
-<a href="#memo-management"><b>05</b><span>Remunerarea managementului</span></a>
-<a href="#memo-rules"><b>06</b><span>Regulile de Fier</span></a>
+<a href="#memo-overview" data-memo-key="overview"><b>01</b><span>Structura Memorandumului</span></a>
+<a href="#memo-math" data-memo-key="capital"><b>02</b><span>Arhitectura capitalului</span></a>
+<a href="#memo-owners" data-memo-key="valuation"><b>03</b><span>Evaluare & raportare</span></a>
+<a href="#memo-protection" data-memo-key="protection"><b>04</b><span>Riscuri & protecții</span></a>
+<a href="#memo-management" data-memo-key="management"><b>05</b><span>Remunerarea managementului</span></a>
+<a href="#memo-rules" data-memo-key="rules"><b>06</b><span>Regulile de Fier</span></a>
 </div>
 </nav>
 <div class="memo-section-index"><b>01</b><span>STRUCTURA DOCUMENTULUI</span><a href="#memo-contents">↑ CUPRINS</a></div><div class="memo-heading" id="memo-overview"><div><p class="eyebrow">DOCUMENT PRIVAT · INVESTITORI</p><h2>Memorandum pentru Investitori.</h2></div><p class="memo-status">EVELYNICOL GLOBAL VALUE HOLDINGS S.A.<br><span>EDIȚIE DE LUCRU · ÎN CURS DE DEZVOLTARE</span></p></div>
@@ -119,4 +119,11 @@
 <p class="iron-rules-note">Aceste reguli exprimă filosofia internă de administrare a capitalului. Ele nu înlocuiesc actele societății, obligațiile administratorilor sau legislația aplicabilă.</p>
 </div><div class="memo-rule"><span>PRINCIPIUL DOCUMENTULUI</span><p>Capitalul nu trebuie cerut înainte ca regulile după care va fi administrat să poată fi explicate clar.</p></div>
 <p class="memo-legal">Structură informativă în curs de elaborare. Prevederile juridice, drepturile aferente claselor de acțiuni, mecanismele anti-diluare și orice eventuală ofertă de investiție vor necesita documentație și validare juridică aplicabilă înainte de utilizare.</p>
-</main><footer class="memo-page-footer"><p>EVELYNICOL GLOBAL VALUE HOLDINGS S.A.</p><a href="/">Înapoi la pagina principală</a></footer></body></html>
+</main><footer class="memo-page-footer"><p>EVELYNICOL GLOBAL VALUE HOLDINGS S.A.</p><a href="/">Înapoi la pagina principală</a></footer><script>
+(()=>{const u='https://aniqsyffijcfjevtbzwj.supabase.co',k='sb_publishable_J76ebmjttv5YPuB8eaTohQ_8AdAE0Nn',db=supabase.createClient(u,k);
+db.from('memorandum_sections').select('section_key,section_number,title,subtitle,body,sort_order').eq('is_public',true).order('sort_order').then(({data})=>{
+ if(!data?.length)return;
+ data.forEach(x=>{const a=document.querySelector('[data-memo-key="'+x.section_key+'"]');if(a){const b=a.querySelector('b'),s=a.querySelector('span');if(b&&x.section_number)b.textContent=x.section_number;if(s&&x.title)s.textContent=x.title;}});
+});
+})();
+</script></body></html>
