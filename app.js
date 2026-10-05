@@ -30,6 +30,7 @@ function fieldHTML(f,label){
 if(f==='is_public')return `<label class="check"><input name="${f}" type="checkbox"> ${label}</label>`;
 if(f==='share_class')return `<label><span>${label}</span><select name="${f}" required><option value="">Selectează</option><option value="A">Clasa A</option><option value="B">Clasa B</option></select></label>`;
 if(f==='market')return `<label><span>${label}</span><select name="${f}" required><option value="">Selectează</option><option value="RO">România (RO)</option><option value="US">SUA (US)</option></select></label>`;
+if(f==='currency')return `<label><span>${label}</span><select name="${f}" required><option value="">Selectează</option><option value="EUR">EUR</option><option value="USD">USD</option><option value="RON">RON</option></select></label>`;
 if(f==='type')return `<label><span>${label}</span><select name="${f}" required><option value="">Selectează</option><option>BUY</option><option>SELL</option><option>DIVIDEND</option><option>DEPOSIT</option><option>WITHDRAWAL</option><option>FEE</option><option>OTHER</option></select></label>`;
 let type=numeric.has(f)?'number':(f==='date'?'date':f==='published_at'?'datetime-local':'text');
 let extra=' step="any"';
