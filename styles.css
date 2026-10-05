@@ -68,3 +68,4 @@
 .letter-principles{grid-template-columns:1fr;gap:14px}
 .letter-takeaway{grid-template-columns:1fr;gap:5px}
 }
+.strategy-intro{max-width:900px;margin:18px 0 34px;color:var(--muted);font-size:17px;line-height:1.7}.strategy-intro+ .grid{margin-top:0}@media(max-width:800px){.strategy-intro{font-size:16px;line-height:1.65;margin:14px 0 28px}}
