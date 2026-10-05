@@ -78,3 +78,5 @@
 .capital-structure-intro{max-width:940px;margin:18px 0 34px;color:var(--muted);font-size:17px;line-height:1.7}.capital-structure-intro p{margin:0 0 12px}.capital-structure-intro p:last-child{margin-bottom:0}@media(max-width:800px){.capital-structure-intro{font-size:16px;line-height:1.65;margin:14px 0 28px}}
 
 .reports-intro{max-width:940px;margin:18px 0 34px;color:var(--muted);font-size:17px;line-height:1.7}.reports-intro p{margin:0 0 12px}.reports-intro p:last-child{margin-bottom:0}@media(max-width:800px){.reports-intro{font-size:16px;line-height:1.65;margin:14px 0 28px}}
+
+.journal-intro{max-width:900px;margin:18px 0 34px;padding-left:22px;border-left:1px solid var(--gold);color:var(--muted);font-size:17px;line-height:1.7}.journal-intro p{margin:0 0 12px}.journal-intro p:last-child{margin-bottom:0;color:var(--text)}@media(max-width:800px){.journal-intro{font-size:16px;line-height:1.65;margin:14px 0 28px;padding-left:16px}}
