@@ -3,3 +3,17 @@
 .moduleintro{margin:8px 0 22px}.moduleintro h3{margin:0}.moduleintro p,.status{color:var(--muted)}.adminform{max-width:none!important}.adminform label span{display:block;color:var(--muted);font-size:12px;margin-bottom:5px}.check{display:flex!important;align-items:center;gap:8px;padding:10px 0}.check input{width:auto}.form-actions{display:flex;gap:10px}.secondary{border-color:var(--line);color:var(--muted)}.rowactions{display:flex;gap:8px;align-items:center}.danger{border-color:#75433d;color:#d99a91}.badge{display:inline-block;margin-left:10px;padding:2px 7px;border:1px solid var(--gold);color:var(--gold);font-size:10px;letter-spacing:.08em}.status{min-height:24px}.adminlist .row{align-items:center}@media(max-width:650px){.row{grid-template-columns:1fr}.rowactions{justify-content:flex-start}.form-actions{flex-direction:column}}
 
 .admin-dashboard{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:22px 0}.admin-dashboard article{background:var(--panel);border:1px solid var(--line);padding:16px}.admin-dashboard small{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em}.admin-dashboard strong{display:block;margin-top:5px;font-family:Newsreader,serif;font-size:26px;color:var(--gold)}.admin-dashboard .privacy{grid-column:1/-1}.admin-dashboard .privacy strong{font:600 13px Manrope,sans-serif;color:var(--text)}@media(max-width:800px){.admin-dashboard{grid-template-columns:1fr 1fr}}
+/* Mobile/tablet usability hardening */
+.tablewrap{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tablewrap table{min-width:680px}
+@media(max-width:650px){
+  .stats,.grid,.admin-dashboard{grid-template-columns:1fr}
+  .panel{padding:22px 16px;max-height:94vh}
+  .adminhead{align-items:flex-start;gap:14px;flex-direction:column}
+  .adminhead>div:last-child{display:flex;flex-wrap:wrap;gap:8px}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px}
+  .tabs button{flex:0 0 auto}
+  input,textarea,select{font-size:16px}
+  .rowactions{flex-wrap:wrap}
+  .form-actions button,.rowactions button{min-height:44px}
+}
