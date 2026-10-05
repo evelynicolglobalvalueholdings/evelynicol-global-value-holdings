@@ -1,6 +1,31 @@
 const SUPABASE_URL='https://aniqsyffijcfjevtbzwj.supabase.co';
 const SUPABASE_KEY='sb_publishable_J76ebmjttv5YPuB8eaTohQ_8AdAE0Nn';
-const db=supabase.createClient(SUPABASE_URL,SUPABASE_KEY),$=s=>document.querySelector(s);
+const $=s=>document.querySelector(s);
+const SESSION_KEY='evelynicol_supabase_session';
+const authListeners=[];
+const getStoredSession=()=>{try{const x=JSON.parse(localStorage.getItem(SESSION_KEY)||'null');if(!x?.access_token)return null;if(x.expires_at&&Date.now()/1000>x.expires_at){localStorage.removeItem(SESSION_KEY);return null}return x}catch{return null}};
+const auth={
+ async signInWithPassword({email,password}){try{const r=await fetch(SUPABASE_URL+'/auth/v1/token?grant_type=password',{method:'POST',headers:{apikey:SUPABASE_KEY,'Content-Type':'application/json'},body:JSON.stringify({email,password})});const d=await r.json();if(!r.ok)return{data:{session:null},error:{message:d.error_description||d.msg||'Autentificare eșuată'}};const session={...d,expires_at:Math.floor(Date.now()/1000)+Number(d.expires_in||3600)};localStorage.setItem(SESSION_KEY,JSON.stringify(session));authListeners.forEach(fn=>fn('SIGNED_IN',session));return{data:{session},error:null}}catch(e){return{data:{session:null},error:e}}},
+ async getSession(){return{data:{session:getStoredSession()}}},
+ async signOut(){localStorage.removeItem(SESSION_KEY);authListeners.forEach(fn=>fn('SIGNED_OUT',null));return{error:null}},
+ onAuthStateChange(fn){authListeners.push(fn);return{data:{subscription:{unsubscribe(){const i=authListeners.indexOf(fn);if(i>=0)authListeners.splice(i,1)}}}}}
+};
+function from(table){
+ let method='GET',filters=[],ordering='',limitN='',payload=null,selection='*';
+ const q={
+  select(cols='*'){selection=cols;if(method==='GET')method='GET';return q},
+  eq(col,val){filters.push(encodeURIComponent(col)+'=eq.'+encodeURIComponent(val));return q},
+  order(col,{ascending=true}={}){ordering='order='+encodeURIComponent(col)+'.'+(ascending?'asc':'desc');return q},
+  limit(n){limitN='limit='+Number(n);return q},
+  insert(obj){method='POST';payload=obj;return q},
+  update(obj){method='PATCH';payload=obj;return q},
+  delete(){method='DELETE';return q},
+  then(resolve,reject){return run().then(resolve,reject)}
+ };
+ async function run(){try{const session=getStoredSession();const parts=[];if(method==='GET')parts.push('select='+encodeURIComponent(selection));parts.push(...filters);if(ordering)parts.push(ordering);if(limitN)parts.push(limitN);const headers={apikey:SUPABASE_KEY,Authorization:'Bearer '+(session?.access_token||SUPABASE_KEY),'Content-Type':'application/json',Prefer:'return=representation'};const r=await fetch(SUPABASE_URL+'/rest/v1/'+table+(parts.length?'?'+parts.join('&'):''),{method,headers,body:payload==null?undefined:JSON.stringify(payload)});let data=null;const txt=await r.text();if(txt)data=JSON.parse(txt);if(!r.ok)return{data:null,error:{message:data?.message||data?.hint||('HTTP '+r.status)}};return{data,error:null}}catch(e){return{data:null,error:e}}}
+ return q
+}
+const db={auth,from};
 const esc=v=>String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 async function loadPublic(){const [{data:c},{data:p},{data:a},{data:r},{data:s},{data:j}]=await Promise.all([db.from('capital').select('*').eq('is_public',true),db.from('portfolio').select('*').eq('is_public',true),db.from('company_analyses').select('*').eq('is_public',true),db.from('reports').select('*').eq('is_public',true).order('published_at',{ascending:false}),db.from('site_content').select('*').eq('is_public',true),db.from('founder_journal').select('*').eq('is_public',true).order('published_at',{ascending:false})]);
 const cap=(c||[]).find(x=>x.label==='Capital inițial');if(cap)$('#capital').textContent=new Intl.NumberFormat('ro-RO',{style:'currency',currency:cap.currency||'EUR',maximumFractionDigits:0}).format(cap.amount);
