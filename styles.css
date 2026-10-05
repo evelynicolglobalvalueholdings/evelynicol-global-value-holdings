@@ -130,3 +130,15 @@
 .memorandum-page .memo-grid,.memorandum-page .math-scenarios,.memorandum-page .valuation-grid,.memorandum-page .risk-grid,.memorandum-page .management-principles{margin-top:8px}
 .memorandum-page p{max-width:78ch}.memorandum-page .memo-legal,.memorandum-page .math-legal,.memorandum-page .owner-architecture-legal,.memorandum-page .investor-protection-legal,.memorandum-page .management-legal,.memorandum-page .iron-rules-note{max-width:92ch}
 @media(max-width:800px){.memorandum-page>.memo-section-index{grid-template-columns:34px 1fr auto;margin-top:48px}.memorandum-page>.memo-section-index span{font-size:8px}.memorandum-page>.memo-section-index a{font-size:7px}.memorandum-page>.memo-heading,.memorandum-page>.capital-math,.memorandum-page>.owner-architecture,.memorandum-page>.investor-protection,.memorandum-page>.management-comp,.memorandum-page>.iron-rules{margin-top:22px}}
+
+/* Homepage editorial polish */
+.home-section-no{display:block;width:max-content;margin:0 0 18px;padding-top:8px;border-top:1px solid var(--gold);font-size:9px;line-height:1;letter-spacing:.14em;color:var(--gold)}
+main>section:not(.hero){position:relative}
+main>section:not(.hero)+section:not(.hero){border-top:1px solid rgba(255,255,255,.045)}
+main>section h2{letter-spacing:-.018em}
+.strategy-intro,.portfolio-intro,.capital-structure-intro,.reports-intro,.journal-intro{max-width:900px}
+.memorandum-gateway{position:relative;overflow:hidden;border-top:1px solid var(--gold)!important;border-bottom:1px solid var(--line);margin-top:24px}
+.memorandum-gateway:after{content:"M";position:absolute;right:-.03em;bottom:-.3em;font:500 clamp(180px,26vw,390px)/1 Newsreader,serif;color:rgba(255,255,255,.018);pointer-events:none}
+.memorandum-gateway>div,.memo-open{position:relative;z-index:1}
+.memo-open span{display:grid;gap:6px}.memo-open small{font-size:8px;letter-spacing:.13em;color:var(--gold);font-weight:500}
+@media(max-width:800px){.home-section-no{margin-bottom:14px}.memorandum-gateway{margin-top:10px}.memorandum-gateway:after{font-size:190px}}
