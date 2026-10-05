@@ -22,11 +22,12 @@ company_analyses:{label:'Analize EQS',help:'Scorul maxim este 100. EQS este inst
 watchlist:{label:'Watchlist',help:'Companii urmărite pentru oportunități viitoare.',fields:{symbol:'Simbol',company_name:'Companie',market:'Piață',target_price:'Preț țintă',currency:'Monedă',notes:'Note',is_public:'Vizibil public'}},
 transactions:{label:'Tranzacții',help:'Jurnal financiar privat. Suma se calculează automat din cantitate și preț.',fields:{date:'Data',type:'Tip',symbol:'Simbol',description:'Descriere',quantity:'Cantitate',price:'Preț',amount:'Sumă',currency:'Monedă'}},
 reports:{label:'Rapoarte',help:'Rapoarte periodice pentru proprietari.',fields:{title:'Titlu',period:'Perioadă',body:'Conținut',published_at:'Data publicării',is_public:'Vizibil public'}},
+capital_letters:{label:'Capital Letters',help:'Edițiile editoriale EVELYNICOL. Poți publica sau păstra privat fiecare material.',fields:{issue_number:'Număr ediție',title:'Titlu',kicker:'Temă / kicker',deck:'Introducere',principle_1:'Principiul 1',principle_2:'Principiul 2',principle_3:'Principiul 3',takeaway:'Ideea de păstrat',published_at:'Data publicării',is_public:'Vizibil public'}},
 founder_journal:{label:'Jurnal',help:'Însemnările fondatorului.',fields:{title:'Titlu',body:'Conținut',published_at:'Data publicării',is_public:'Vizibil public'}}};
 let current='site_content',editing=null,rows=[];
 const numeric=new Set(['amount','shares','participation_pct','quantity','avg_cost','target_price','price','business_quality','profitability','balance_sheet','cash_flow','competitive_advantage','management_capital_allocation','valuation','sort_order']);
 const eqsMax={business_quality:20,profitability:20,balance_sheet:15,cash_flow:15,competitive_advantage:10,management_capital_allocation:10,valuation:10};
-const long=new Set(['body','notes','thesis','description']);
+const long=new Set(['body','notes','thesis','description','deck','takeaway']);
 function fieldHTML(f,label){
 if(f==='is_public')return `<label class="check"><input name="${f}" type="checkbox"> ${label}</label>`;
 if(f==='share_class')return `<label><span>${label}</span><select name="${f}" required><option value="">Selectează</option><option value="A">Clasa A</option><option value="B">Clasa B</option></select></label>`;
